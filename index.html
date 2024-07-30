@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<title>TMF</title>
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"></script>
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+	
+	
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<style>
+/* Basics */
+html,body {
+    width: 100%;
+    height: 100%;
+    font-family: Calibri, sans-serif;
+    color: black;
+   	background-color: rgb(101, 101, 101);
+}
+body { 
+    margin: 0;
+    padding: 0;
+    /* background-image: url("../images/egg-shell.png"); */
+    /* background-repeat: repeat; */
+    background-image: url("../images/port-3.png");
+	background-position: center center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+input[name='trailer[]']{
+	font-size: .9rem !important;
+}
+
+/*----------Classes----------*/
+
+.form-login {
+    background-color: #EDEDED;
+    border-radius: 15px;
+    border-color: #ffffff;
+    border-width: 5px;
+    border-style: solid;
+    margin: auto;
+    overflow: hidden;
+	/* min-height: 688px; */
+	max-width: 612px;
+}
+
+.btn{
+	white-space: normal;
+}
+
+.btn-primary{
+    background-color: #33658A;
+}
+.btn-primary:hover{
+    background-color: #144061;
+}
+.btn-primary:active{
+    background-color: #144061 !important;
+}
+.submitDivs{
+    display: none;
+    position: relative;
+}
+.swal2-success{
+    display: none;
+}
+.swal2-error{
+    display: none;
+}
+.loginDivs{
+    position: relative;
+}
+.confirmationDivs{
+    display: none;
+    position: relative;
+}
+.h-full{
+    height: 100%;
+}
+
+.column-label-div{
+	font-size: 1rem;
+}
+
+.column-input{
+	width: 100%;
+	font-size: 0.9rem;
+}
+
+.HIDEME {
+	display: none !important;
+}
+
+.readonly-div{
+	/* background-color: transparent !important; */
+	/* white-space: nowrap; */
+	display: block;
+	width: 100%;
+	height: calc(2.25rem + 2px);
+	/* padding: .375em .75rem; */
+	padding: 0;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #e9ecef !important;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+}
+
+.readonly-div span{
+	height: 100%;
+}
+
+.modal-details{
+	min-width: 25%;
+}
+
+.modal-transporter{
+	min-width: 50% !important;
+}
+
+.requests-header-row{
+	background-color: #cce5ff !important;
+	border-radius: 0.25rem;
+	margin-right: 7px !important;
+}
+
+.request-row-div{
+	color: #1b1e21;
+	border-color: #c6c8ca;
+}
+
+.requests-row:nth-child(even) .request-row-div{
+    background-color: #cce5ff !important;
+}
+
+.new-requests-row:nth-child(even) .request-row-div{
+    background-color: #cce5ff !important;
+}
+
+.nav-pills .nav-link{
+    color: #1e7e34;
+    background-color: transparent;
+	border: 1px solid;
+	border-color: #1e7e34;
+}
+
+.nav-pills .nav-link:hover{
+    color: #fff;
+	background-color: #1e7e3480 !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+	color: #fff !important;
+	background-color: #1e7e34 !important;
+	border-color: #1c7430 !important;
+}
+
+.btn-text{
+	font-size: 0.9rem !important;
+}
+
+.tab-content{
+	border: 1px solid #c6c8ca;
+	border-radius: 0.25rem;
+
+}
+
+.error{
+	color: red;
+}
+
+.port-input{
+	font-size: 0.6rem;
+	padding: 2px;
+}
+
+.port-span{
+	font-size: 0.6rem;
+}
+
+.deleteRequestButton{
+
+}
+
+.fs-075{
+	/* font-family: Georgia, 'Times New Roman', Times, serif; */
+	font-size: 0.75rem;
+}
+
+.gutter-x-0{
+	--bs-gutter-x: 0;
+}
+
+.addBorder{
+	border: 1px solid black;
+}
+
+.fieldText{
+	color: #33658A;
+}
+/*----------Id's----------*/
+
+
+#logoDiv{
+    
+}
+
+#logoimage {
+    width: 125px;
+    margin: auto;
+}
+#pageHeader{
+    /* color: #33658A; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 0.75rem;
+}
+
+#requests-submit{
+	padding-right: 37px;
+}
+
+#requests-block{
+	overflow-y: scroll;
+	/* max-height: 68px; */
+	height: 415px;
+	padding-right: 20px;
+}
+
+#truckConfirmation{
+    color: #33658A;
+    margin: auto;
+}
+
+#bolNum, #bolDate{
+	padding-left: 12px;
+}
+
+
+
+/* CSS Scroll Animation */
+@media (min-width: 1200px)
+{
+	.scroll-left {
+		height: 100%;	
+		overflow: hidden;
+		position: relative;
+		padding: 0 !important;
+		white-space: nowrap;
+	}
+	.scroll-left span {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		text-align: center;
+		/* Starting position */
+		-moz-transform:translateX(100%);
+		-webkit-transform:translateX(100%);	
+		transform:translateX(100%);
+		/* Apply animation to this element */	
+		-moz-animation: scroll-left 10s linear infinite;
+		-webkit-animation: scroll-left 10s linear infinite;
+		animation: scroll-left 10s linear infinite;
+	}
+	/* Move it (define the animation) */
+	@-moz-keyframes scroll-left {
+		0%   { -moz-transform: translateX(100%); }
+		100% { -moz-transform: translateX(-100%); }
+	}
+	@-webkit-keyframes scroll-left {
+		0%   { -webkit-transform: translateX(100%); }
+		100% { -webkit-transform: translateX(-100%); }
+	}
+	@keyframes scroll-left {
+		0%   { 
+		-moz-transform: translateX(100%); /* Browser bug fix */
+		-webkit-transform: translateX(100%); /* Browser bug fix */
+		transform: translateX(100%); 		
+		}
+		100% { 
+		-moz-transform: translateX(-100%); /* Browser bug fix */
+		-webkit-transform: translateX(-100%); /* Browser bug fix */
+		transform: translateX(-100%); 
+		}
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+    <div class="container h-full">
+        <div class="row h-full justify-content-center align-items-center">
+            <div class="col-12">
+                <!-- the following lines are for the area background -->
+                <div class="row form-login pt-4 pb-4">
+                    <!-- BoL Top Line -->
+                    <div class="col-12">
+                        <div class="row justify-content-start pt-1 pb-1">
+                            <div class="col-8 col-md-6">
+                                <div class=""><strong>BILL OF LADING</strong></div>
+                            </div>
+                            <div class="col-4 col-md-6">
+                                <div class="text-end text-danger"><strong>G-LEW B</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Titan Info / Consignee Info / Customs Info Block -->
+                    <div class="col-12 col-md-6 mb-1 pe-md-3">
+                        <!-- Titan Info Block -->
+                        <div id="logoDiv" class="row pt-1 pb-1 fs-075">
+                            <div class="col-6 d-flex">
+                                <img id="logoimage" class="" src="https://s813211.fmphost.com/Images/TF%20Icon%20Color%20150px.jpg" alt="TMF Logo">
+                            </div>
+                            <div class="col-6 d-flex align-items-center gutter-x-0">
+                                <div>
+                                    Titan Marine Fuel, LLC<br>
+                                    5858 SPID, Suite 109<br>
+                                    Corpus Christi, TX 78412<br>
+                                    P.O. Box 60267<br>
+                                    Corpus Christi, TX 78466<br>
+                                    Tel.  (361) 814-7867
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex align-items-center pt-1 pb-1">
+                                <div>
+                                    Tax ID: 81-3031542<br>
+                                    Origination: Harlingen Dock, Harlingen, TX
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shipping Block -->
+                        <div class="row justify-content-start pt-1 pb-1 mb-1 addBorder">
+                            <div class="col-12">
+                                <strong>Ship to:</strong>
+                            </div>
+                            <div id="bolCompanyName" class="col-12 fieldText fs-075">
+                                LOGISTICA ENERGETICA WOLF SA DE CV
+                            </div>
+                            <div id="bolAddressLine1" class="col-12 fieldText fs-075">
+                                AVENIDA VASCONCELOS 310, OFICINA 6
+                            </div>
+                            <div id="bolAddressLine2" class="col-12 fieldText fs-075">
+                                PLANTA BAJA, COL. SIERRA MADRE
+                            </div>
+                            <div id="bolAddressLine3" class="col-12 fieldText fs-075">
+                                SAN PEDRO GARZA GARCIA
+                            </div>
+                            <div id="bolAddressLine4" class="col-12 fieldText fs-075">
+                                NUEVO LEON MEXICO
+                            </div>
+                            <div id="bolAddressLine5" class="col-12 fieldText fs-075">
+                                LEW19040876A
+                            </div>
+                        </div>
+
+                        <!-- Charter Ref / ITN Block -->
+                        <div class="row justify-content-start pt-1 pb-1 mb-1 addBorder">
+                            <div class="col-12 col-md-6 text-md-end">
+                                <strong>Charter Ref No:</strong>
+                            </div>
+                            <div id="charterRefNum" class="col-12 col-md-6 fieldText">
+                                TNE361997
+                            </div>
+                            <div class="col-12 col-md-6 text-md-end">
+                                <strong>ITN No:</strong>
+                            </div>
+                            <div id="itnNum" class="col-12 col-md-6 fieldText">
+                                X20240521032755
+                            </div>
+                        </div>
+
+                        <!-- Customs Code Block -->
+                        <div class="row justify-content-start pt-1 pb-1 addBorder">
+                            <div class="col-12">
+                                <strong>Customs Code of Product:</strong>
+                            </div>
+                            <div class="col-3">
+                                US
+                            </div>
+                            <div id="usCustomsCode" class="col-9 fieldText">
+                                HTS 2710.12.1519
+                            </div>
+                            <div class="col-3">
+                                Mexico
+                            </div>
+                            <div id="mexCustomsCode" class="col-9 fieldText">
+                                HTS 2710.11.04
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BoL Info Block -->
+                    <div class="col-12 col-md-6 mb-1 addBorder align-items-center">
+                        <!-- Date Block -->
+                        <div class="row justify-content-start pt-1 pb-0">
+                            <!-- Your existing blocks here -->
+                        </div>
+
+                        <div class="row justify-content-start pt-0 pb-1 align-items-center">
+                            <div class="col-12 col-md-6 d-flex d-md-block text-md-center">
+                                <div class="col-6 col-md-12">
+                                    <strong>Date:</strong>
+                                </div>
+                                <div id="bolDate" class="col-6 col-md-12 fieldText ps-md-0"></div>
+                            </div>
+                            <div class="col-12 col-md-6 d-flex d-md-block text-md-center">
+                                <div class="col-6 col-md-12">
+                                    <strong>BoL No:</strong>
+                                </div>
+                                <div id="bolNum" class="col-6 col-md-12 fieldText ps-md-0"></div>
+                            </div>
+                            <!-- Ticket Number Block -->
+                            <div class="col-6 col-md-6 text-md-end">
+                                <strong>TMF Ticket No:</strong>
+                            </div>
+                            <div id="ticketNum" class="col-6 col-md-6 fieldText"></div>
+
+                            <!-- Net Wight Pounds Block -->
+                            <div class="col-6 col-md-6 text-md-end">
+                                <strong>Net Weight LB:</strong>
+                            </div>
+                            <div id="finalLBS" class="col-6 col-md-6 fieldText"></div>
+
+                            <!-- Net Wight Kilos Block -->
+                            <div class="col-6 col-md-6 text-md-end">
+                                <strong>Net Weight KG:</strong>
+                            </div>
+                            <div id="finalKG" class="col-6 col-md-6 fieldText"></div>
+
+                            <!-- Time In Block -->
+                            <div class="col-6 col-md-6 text-md-end">
+                                <strong>Time In:</strong>
+                            </div>
+                            <div id="timeIn" class="col-6 col-md-6 fieldText"></div>
+
+                            <!-- Time Out Block -->
+                            <div class="col-6 col-md-6 text-md-end">
+                                <strong>Time Out:</strong>
+                            </div>
+                            <div id="timeOut" class="col-6 col-md-6 fieldText"></div>
+
+                            <!-- Total Pump Time Block -->
+                            <div class="col-6 col-md-6 text-md-end">
+                                <strong>Total Pump Time:</strong>
+                            </div>
+                            <div id="totalPumpTime" class="col-6 col-md-6 fieldText"></div>
+
+                            <!-- Trailer Number Block -->
+                            <div class="col-6 col-md-6 text-md-end">
+                                <strong>Trailer Number:</strong>
+                            </div>
+                            <div id="trailerNum" class="col-6 col-md-6 fieldText"></div>
+                            
+                            <!-- Trailer License Block -->
+                            <div class="col-6 col-md-6 text-md-end">
+                                <strong>Trailer License:</strong>
+                            </div>
+                            <div id="trailerLicense" class="col-6 col-md-6 fieldText"></div>
+
+                            <div class="mt-3 mt-md-0">
+                                <!-- Transport Company Block -->
+                                <div class="col-12">
+                                    <strong>Transport Company Name:</strong>
+                                </div>
+                                <div id="transporter" class="col-12 fieldText"></div>
+                                
+                                <!-- Driver Name Block -->
+                                <div class="col-12">
+                                    <strong>Driver Name:</strong>
+                                </div>
+                                <div id="driverName" class="col-12 fieldText"></div>
+
+                                <!-- PIC Loader Block -->
+                                <div class="col-12">
+                                    <strong>PIC Loader:</strong>
+                                </div>
+                                <div id="picName" class="col-12 fieldText"></div>
+
+                                <!-- Seal Numbers Block -->
+                                <div class="col-12">
+                                    <strong>Seal Numbers:</strong>
+                                </div>
+                                <div id="seal1" class="col-3 fieldText"></div>
+                                <div id="seal2" class="col-3 fieldText"></div>
+                                <div class="col-6"></div>
+                                <div id="seal3" class="col-3 fieldText"></div>
+                                <div id="seal4" class="col-3 fieldText"></div>
+                                <div class="col-6"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 addBorder">
+                        <!-- Volume Block -->
+                        <div class="col-12">
+                            <!-- Volume Info Block -->
+                            <div id="volumeDiv" class="row pt-0 pb-0">
+                                <div class="col-3 addBorder border-top-0 border-start-0">
+                                    <strong>Volume</strong>
+                                </div>
+                                <div class="col-9 addBorder border-top-0 border-start-0 border-end-0">
+                                    <strong>Description</strong>
+                                </div>
+                                <div class="col-3 border-end border-black text-end">
+                                    <strong>Gross</strong>
+                                </div>
+                                <div id="grossVol" class="col-9 d-flex align-items-center fieldText"></div>
+                                <div class="col-3 border-end border-black text-end">
+                                    <strong>Net</strong>
+                                </div>
+                                <div id="netVol" class="col-9 d-flex align-items-center fieldText"></div>
+                                <div class="col-3 border-end border-black text-end">
+                                    <strong>Temp</strong>
+                                </div>
+                                <div id="temperature" class="col-9 d-flex align-items-center fieldText"></div>
+                            </div>
+                        </div>
+
+                        <!-- Legal Text Block -->
+                        <div class="col-12 fs-075">
+                            <div id="legalDiv" class="row pt-0 pb-0">
+                                <!-- Product Info Block -->
+                                <div class="col-3 border-end border-black pt-2"></div>
+                                <div class="d-flex col-2 col-md-1 align-items-top pt-2">
+                                    <div class="text-end p-0">
+                                        <div>
+                                            <strong>X</strong>
+                                        </div>
+                                        <div>
+                                            <strong>HM</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-7 col-md-8 ps-0 pt-2">
+                                    <strong id="bolBody">
+                                        UN1203, Gasoline, 3, PG II<br>
+                                        Hazardous Material, Flammable<br>
+                                        (Gasoline)<br>
+                                        <br>
+                                        <br>
+                                        172.204.(a)(1) - "This is to certify that the above-named materials are properly classified, described, packaged, marked and labeled, and are in proper condition for transportation according to the applicable regulations of the Department of Transportation.
+                                    </strong>
+                                </div>
+
+                                <!-- Emergency Info Block -->
+                                <div class="col-3 border-end border-black pt-2"></div>
+                                <div class="col-7 col-md-8 offset-2 offset-md-1 ps-0 pt-3">
+                                    <strong id="emergencyText">
+                                        Emergency Response / HAZMAT:  800-373-7542<br>
+                                    </strong>
+                                    <strong class="text-danger">
+                                        ALL PRODUCTS ARE FOR EXPORT ONLY
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- <script src="api-key.js"></script>-->
+    <script src="script.js?ts=9"></script>
+</body>
+</html>
